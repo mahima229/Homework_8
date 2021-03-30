@@ -1,0 +1,53 @@
+---
+title: "Homework 8"
+author: "Mahima Palamanda"
+date: "3/30/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) 
+library(dplyr) 
+library(data.table)
+```
+#Question 1a
+```{r}
+dfcollegescore<-fread("college_score.csv")
+str(dfcollegescore)
+```
+#Question 1b
+```{r}
+nrow(dfcollegescore)
+ncol(dfcollegescore)
+```
+#Question 1c
+```{r}
+dfcollegedata<-read.csv("college_score.csv")
+glimpse(dfcollegedata)
+```
+#Question 2
+```{r}
+str(dfcollegescore)
+```
+#Question 3
+```{r}
+median(dfcollegescore$AVGFACSAL,na.rm=TRUE)
+```
+#Question 4
+```{r}
+dfcollegedata %>%
+  mutate(ICLEVEL = recode(ICLEVEL, "1" = "OneYear","2"= "TwoYear", "3"= "ThreeYear"))%>%
+  select(INSTNM, SAT_AVG, ADM_RATE,ICLEVEL)->
+  dfcollegedata
+glimpse(dfcollegedata)
+```
+#Question 5
+```{r}
+print(dfcollegescore,topn=5)
+```
+#Question 6
+```{r}
+dfcollegescore[550:555,]
+```
+
